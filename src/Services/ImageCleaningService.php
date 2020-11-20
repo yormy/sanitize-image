@@ -58,7 +58,6 @@ class ImageCleaningService
 
     public function resize()
     {
-        $resolution = [];
         if ($this->resolution) {
             $resolution = $this->resolution;
         } else {
