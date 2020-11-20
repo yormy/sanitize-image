@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Yormy\\SanitizeImage\\": "src",
+            "Yormy\\SanitizeImage\\": "src"
         }
     },
     "autoload-dev": {
