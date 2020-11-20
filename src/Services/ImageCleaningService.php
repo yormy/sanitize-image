@@ -2,18 +2,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\InvalidConfimCodeException;
-use App\Exceptions\InvalidValueException;
-use App\Exceptions\NotAllowedException;
-use App\Libraries\DateHelper;
-use App\Libraries\GlobalHelper;
-use App\Models\ConfirmCode;
-use App\Models\ConfirmCodeRetry;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Imagick;
-use Modules\User\Models\Security\ActionTarpit;
 
 /*
         $imageCleaningService = new ImageCleaningService();
@@ -50,10 +39,11 @@ class ImageCleaningService
 
     public function setResolution(float $x, float $y) : self
     {
-        $this->resolution =[
+        $this->resolution = [
             'x' => $x,
             'y' => $y,
         ];
+
         return $this;
     }
 
@@ -75,14 +65,14 @@ class ImageCleaningService
             $originalResolution = $this->image->getImageResolution();
 
             if ($originalResolution['x'] === 0.0 || $originalResolution['y'] == 0.0) {
-                $resolution= [
+                $resolution = [
                     'x' => 10,
                     'y' => 10,
                 ];
             } else {
                 $resolution = [
-                    'x' => $originalResolution['x']-1,
-                    'y' => $originalResolution['y']-1,
+                    'x' => $originalResolution['x'] - 1,
+                    'y' => $originalResolution['y'] - 1,
                 ];
             }
         }
@@ -96,12 +86,12 @@ class ImageCleaningService
         );
     }
 
-
     public function getBaseWebp()
     {
         $this->resize();
         $this->image->setImageFormat('webp');
         $imageString = $this->image->getImageBlob();
+
         return self::WEBP_BASE64. base64_encode($imageString);
     }
 
@@ -111,6 +101,7 @@ class ImageCleaningService
         $this->image->setImageFormat('jpg');
         $this->image->setImageCompressionQuality(85);
         $imageString = $this->image->getImageBlob();
+
         return self::JPEG_BASE64. base64_encode($imageString);
     }
 
@@ -125,7 +116,6 @@ class ImageCleaningService
         $this->image = new Imagick();
         $this->image->readImageBlob(base64_decode($bareImage));
     }
-
 
     private function validFormat(string $screenshot, string $type) : bool
     {
