@@ -10,5 +10,4 @@ class TestCase extends BaseTestcase
     {
         parent::setUp();
     }
-
 }
