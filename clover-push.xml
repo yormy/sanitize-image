@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605877908">
-  <project timestamp="1605877908">
+<coverage generated="1605880679">
+  <project timestamp="1605880679">
     <file name="/home/runner/work/sanitize-image/sanitize-image/src/Services/ImageCleaningService.php">
       <class name="App\Services\ImageCleaningService" namespace="global">
         <metrics complexity="16" methods="10" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="0" elements="46" coveredelements="0"/>
